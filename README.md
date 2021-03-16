@@ -1,6 +1,6 @@
 # UiPath
   
-1. UiPath (.NET Framework) 문법  
+1. 기본 문법  
 2. 활용 예제  
   
   
