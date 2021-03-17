@@ -1,8 +1,8 @@
 # UiPath
   
-1. Basic : 기본 문법  
-2. Application : 활용 예제  
-  
+1. 기본 문법 : Basic
+2. 연습 예제 : Example
+3. 활용 예제 : Application
   
   
   
