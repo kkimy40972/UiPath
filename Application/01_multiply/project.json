@@ -1,6 +1,6 @@
 {
-  "name": "Application_2 SearchRank",
-  "description": "활용예제_2. yahoo.com의 실시간 검색어 1~10위까지 셀렉터로 웹크롤링",
+  "name": "Application_1 multiply",
+  "description": "활용예제_1. 메모장에 구구단 입력",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.9.5]",
@@ -43,7 +43,7 @@
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "1313e527-9c03-4db8-920e-b2b5dd7d44dd",
+      "uniqueId": "2e9dcc81-2997-4669-b634-c4ba413f54d8",
       "input": [],
       "output": []
     }
