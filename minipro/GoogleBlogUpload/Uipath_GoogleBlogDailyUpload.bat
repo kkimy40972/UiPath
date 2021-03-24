@@ -1,1 +1,1 @@
-start "" /min "C:\Users\yb.kim.LAPTOP-16D9NU9S\AppData\Local\UiPath\app-20.10.6\UiRobot.exe" -file "C:\ProgramData\UiPath\Packages\GoogleBlogUpload\GoogleBlogUpload.1.0.2.nupkg"
+start "" /min "C:\Users\____\AppData\Local\UiPath\app-20.10.6\UiRobot.exe" -file "C:\ProgramData\UiPath\Packages\GoogleBlogUpload\GoogleBlogUpload.1.0.2.nupkg"
