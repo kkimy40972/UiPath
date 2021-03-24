@@ -16,7 +16,88 @@ UiPath를 이용한 구글 블로그에 매일 1개씩 글 업로드 자동화
 7. 퍼머링크
 8. 매일 정해진 시간에 글 1개씩 등록 : Window Schedule로 설정
 
----
+---  
   
-주제 구체화 및 플로우 설계  
-https://www.notion.so/3-24-13-79d7b0234b774f15abacef1d3931627e
+  
+### 주제 구체화
+
+- PC에 폴더 이름을 날짜로 등록해놓고, 해당 날짜에 해당 폴더에 있는 파일을 업로드
+- Window Schedule에서 지정한 시간에 실행되도록 설정해서 자동 업로드
+  
+- 구글 블로그
+    - 로그인
+        1. 아이디, 비밀번호 입력
+        2. 계정 선택 : 해당 계정 있는 경우 / 없는 경우
+        3. 이미 로그인 완료
+    - 글쓰기 : `새 글` 버튼 클릭
+        1. 제목 : 파일명
+        2. 본문 설정
+            - 글꼴 유형
+            - 글꼴 크기
+            - `옵션` → 단락 맞춤
+        3. 본문 : 파일 내용
+    - 첨부파일
+        1. 링크
+            - 텍스트, 링크
+            - `새창에서 링크 열기`
+        2. 이미지
+            - `컴퓨터에서 업로드`
+            - `파일선택` → **파일이 열리는데 시간이 걸리기 때문에 대기 시간 필요**
+                - 파일 경로
+                - 파일 이름 : **확장자명까지**
+                - `열기`
+            - `선택`
+    - 라벨 → **쉼표로 구분**
+        - 엑셀 각 열에 있는 단어 가져와서 쉼표 붙여서 넣기
+        - 맨 마지막 단어에 쉼표 붙어있어도 문제발생X
+    - 게시 날짜 : `자동`
+    - 퍼머링크 : `맞춤 퍼머링크`  _______________.html  
+  
+   
+   
+   
+### FLOW 설계
+
+1. Chrome으로 구글블로그 열기
+2. 로그인 
+    - 아이디와 비밀번호는 변수로 설정
+    - 각각의 페이지로 넘어갔는지 확인하고 넘어간 경우 다음 액티비티가 실행되도록 설정
+    1. 아이디, 비밀번호 입력
+    2. 계정 선택 : 해당 계정 있는 경우 / 없는 경우
+    3. 이미 로그인 완료
+3. 글쓰기
+    - `새 글` 버튼 클릭
+    1. 제목 : `NOTICE_yyyyMMdd`
+        - 제목 입력 제대로 업로드 된 이후 글 작성으로 넘어가기
+    2. 서문 : `introduction.xlsx` 파일 읽어와서 입력
+    3. 본문 : 파일 내용 가져오기
+        - 설정 : 글씨크기 `중간`, `가운데 맞춤`
+        - `2021-03.xlsx` 의 오늘날짜(`yyyy-MM-dd`) 시트의 데이터 가져와서 입력
+    4. 첨부파일
+        - 설정 : `양쪽 맞춤`
+        - 첨부파일 경로와 파일명 입력해서 가져오기
+        - 파일 다 업로드 된 후에 `선택` 버튼 눌러서 첨부 완료
+        - 크기 : `아주 크게`
+    5. 라벨 : `common_label.xlsx`에서 읽어온 각 열의 데이터 + 쉼표(`,`)
+    6. 게시날짜 : 자동
+    7. 퍼머링크 : 맞춤 `notice_yyyy-MM-dd`.html
+4. 업로드
+    - `게시` 버튼
+
+---
+
+### 자동 업데이트
+
+1. bat 파일 실행
+    - cmd창에 `start "" /min "C:\Users\yb.kim.LAPTOP-16D9NU9S\AppData\Local\UiPath\app-20.10.6\UiRobot.exe" -file "C:\ProgramData\UiPath\Packages\GoogleBlogUpload\GoogleBlogUpload.1.0.2.nupkg"` 입력시 실행 문제 없음
+    - 위의 실행코드로 bat 파일 생성 : `Uipath_GoogleBlogDailyUpload.bat`
+    - bat파일을 윈도우 스케줄러에 등록
+
+2. Window Scheduler
+    - 작업 이름 : `Uipath_GoogleBlogDailyUpload`
+        - 매주 월~금 오전 09:00:00
+        - `C:\Users\yb.kim.LAPTOP-16D9NU9S\AppData\Local\UiPath\app-20.10.6\UiRobot.exe`
+        - `C:\00.Uipath\01.miniProject\GoogleBlogUpload\Main.xaml`
+        - `C:\ProgramData\UiPath\Packages\GoogleBlogUpload\GoogleBlogUpload.1.0.2.nupkg`
+
+  
