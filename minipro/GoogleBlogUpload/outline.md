@@ -53,9 +53,9 @@ UiPath를 이용한 구글 블로그에 매일 1개씩 글 업로드 자동화
     - 게시 날짜 : `자동`
     - 퍼머링크 : `맞춤 퍼머링크`  _______________.html  
   
-   
-   
-   
+  
+---
+  
 ### FLOW 설계
 
 1. Chrome으로 구글블로그 열기
@@ -89,15 +89,9 @@ UiPath를 이용한 구글 블로그에 매일 1개씩 글 업로드 자동화
 ### 자동 업데이트
 
 1. bat 파일 실행
-    - cmd창에 `start "" /min "C:\Users\yb.kim.LAPTOP-16D9NU9S\AppData\Local\UiPath\app-20.10.6\UiRobot.exe" -file "C:\ProgramData\UiPath\Packages\GoogleBlogUpload\GoogleBlogUpload.1.0.2.nupkg"` 입력시 실행 문제 없음
-    - 위의 실행코드로 bat 파일 생성 : `Uipath_GoogleBlogDailyUpload.bat`
+    - 실행코드로 bat 파일 생성 : `Uipath_GoogleBlogDailyUpload.bat`
     - bat파일을 윈도우 스케줄러에 등록
 
 2. Window Scheduler
     - 작업 이름 : `Uipath_GoogleBlogDailyUpload`
-        - 매주 월~금 오전 09:00:00
-        - `C:\Users\yb.kim.LAPTOP-16D9NU9S\AppData\Local\UiPath\app-20.10.6\UiRobot.exe`
-        - `C:\00.Uipath\01.miniProject\GoogleBlogUpload\Main.xaml`
-        - `C:\ProgramData\UiPath\Packages\GoogleBlogUpload\GoogleBlogUpload.1.0.2.nupkg`
-
-  
+        - 매주 월~금 오전 09:00:00  
